@@ -28,4 +28,4 @@ it freely, subject to the following restrictions:
 External libraries used by NetEXT
 -------------------------------
 
-* SFML/SFML.NET is under ZLIB/PNG - read the 'LICENSE.MD' file for full details
+* SFML/SFML.NET is under ZLIB/PNG - read the 'readme.MD' file for full details

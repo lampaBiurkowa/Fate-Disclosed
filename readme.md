@@ -63,5 +63,5 @@ External libraries used by VideoStreamer
 -------------------------------
 
 + ffmpeg is mostly under LGPL v2.1+ - read the 'ffmpeg_license.txt' file  folder for full details
-+ SFML/SFML.NET is under ZLIB/PNG - read the 'LICENSE.MD' file folder for full details
++ SFML/SFML.NET is under ZLIB/PNG
 + NetEXT is under ZLIB/PNG - read the 'netext_license.txt' file for full details
