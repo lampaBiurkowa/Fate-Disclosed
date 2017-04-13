@@ -1,8 +1,6 @@
-NetEXT
-----
-
-NetEXT - Copyright (C) 2015 Brown Star by Zachariah Brown
-
+VideoStreamer
+---------
+Copyright (C) 2013 Brown Star by Zachariah Brown
 This software is provided 'as-is', without any express or
 implied warranty. In no event will the authors be held
 liable for any damages arising from the use of this software.
@@ -22,10 +20,11 @@ it freely, subject to the following restrictions:
 
 3. This notice may not be removed or altered from any
    source distribution.
-
-
-
-External libraries used by NetEXT
+   
+   
+External libraries used by VideoStreamer
 -------------------------------
 
-* SFML/SFML.NET is under ZLIB/PNG - read the 'sfml_license.txt' file for full details
++ ffmpeg is mostly under LGPL v2.1+ - read the 'ffmpeg_license.txt' file  folder for full details
++ SFML/SFML.NET is under ZLIB/PNG - read the 'sfml_license.txt' file for full details
++ NetEXT is under ZLIB/PNG - read the 'netext_license.txt' file for full details
