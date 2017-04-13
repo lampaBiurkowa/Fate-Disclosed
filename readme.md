@@ -5,7 +5,7 @@ The project uses:
 
 SFML/SFML.NET (Simple and Fast Multimedia Library)
 -----------
-Copyright (c) Laurent Gomila. SFML is under ZLIB/PNG - read the 'sfml_license.txt' file for full details
+Copyright (c) Laurent Gomila. SFML is under ZLIB/PNG license - read the 'sfml_license.txt' file for full details.
 
 External Libraries used by SFML
 --------------
@@ -20,7 +20,7 @@ External Libraries used by SFML
 
 VideoStreamer
 ---------
-Copyright (C) 2013 Brown Star by Zachariah Brown. VideoStreamer is under ZLIB/PNG license.
+Copyright (C) 2013 Brown Star by Zachariah Brown. VideoStreamer is under ZLIB/PNG license- read the 'videostreamer_license.txt' file for full details.
    
    
 External libraries used by VideoStreamer
