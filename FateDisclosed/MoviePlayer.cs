@@ -1,4 +1,15 @@
-﻿using FateDisclosed.Screens;
+﻿/***
+ * *********
+ * This source uses SFML (Simple and Fast Multimedia Library)
+ * which is released under the zlib/png license.
+ * Copyright (c) Laurent Gomila
+ * *********
+ * This source uses MotionNET
+ * which is released under the zlib/png license.
+ * Copyright (C) 2015 by Zachariah Brown
+ * *********
+ ***/
+using FateDisclosed.Screens;
 using MotionNET;
 
 namespace FateDisclosed

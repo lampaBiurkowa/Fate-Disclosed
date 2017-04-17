@@ -4,7 +4,7 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
-***/
+ ***/
 using SFML.Window;
 
 namespace FateDisclosed.Input

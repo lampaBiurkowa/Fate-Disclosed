@@ -4,9 +4,10 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
-***/
+ ***/
 using FateDisclosed.GUI.Windows;
 using SFML.Graphics;
+
 namespace FateDisclosed.Screens
 {
     class MainMenuScreen : AbstractScreen

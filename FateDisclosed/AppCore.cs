@@ -4,7 +4,7 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
-***/
+ ***/
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
