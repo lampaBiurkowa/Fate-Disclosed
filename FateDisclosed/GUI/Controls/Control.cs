@@ -20,7 +20,6 @@ namespace FateDisclosed.GUI.Controls
             this.win = win;
         }
 
-        public abstract void Draw();
         public abstract void Update();
     }
 }

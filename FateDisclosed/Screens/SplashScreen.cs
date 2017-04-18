@@ -1,4 +1,9 @@
 ﻿using SFML.System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FateDisclosed.Screens
 {
@@ -31,7 +36,7 @@ namespace FateDisclosed.Screens
         public override void Update(float deltaTime)
         {
             movie.Update();
-            if(time.ElapsedTime.AsSeconds() >= 14 || new Input.KeyboardInput().KeyPressed(SFML.Window.Keyboard.Key.Escape))
+            if(movie.movie.IsEndofFileReached || new Input.KeyboardInput().KeyPressed(SFML.Window.Keyboard.Key.Escape))
             {
                 loadingAnimation.Play();
                 loadingAnimation.Update();

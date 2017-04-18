@@ -35,11 +35,11 @@ namespace FateDisclosed.Screens
             app.win.Draw(menuLayer1);
             app.win.Draw(menuLayer2);
 
-            startGame.Draw();
-            loadGame.Draw();
-            selectProfile.Draw();
-            options.Draw();
-            quitGame.Draw();
+            app.win.Draw(startGame);
+            app.win.Draw(loadGame);
+            app.win.Draw(selectProfile);
+            app.win.Draw(options);
+            app.win.Draw(quitGame);
 
             windowExit.DrawOnWindow();
             app.win.Draw(windowExit);
@@ -63,6 +63,12 @@ namespace FateDisclosed.Screens
             selectProfile = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Select profile", AssetsManager.GetFont("caprkfont"));
             options = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Options", AssetsManager.GetFont("caprkfont"));
             quitGame = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Quit", AssetsManager.GetFont("caprkfont"));
+
+            startGame.TextHeightFix = 15;
+            loadGame.TextHeightFix = 15;
+            selectProfile.TextHeightFix = 15;
+            options.TextHeightFix = 15;
+            quitGame.TextHeightFix = 15;
 
             startGame.Position = new SFML.System.Vector2f(app.virtualResolution.X - 400, 200);
             loadGame.Position = new SFML.System.Vector2f(app.virtualResolution.X - 400, 320);
