@@ -9,12 +9,14 @@
  * Copyright (C) 2015 by Zachariah Brown
  * *********
  ***/
+using System;
 using FateDisclosed.Screens;
 using MotionNET;
+using SFML.Graphics;
 
 namespace FateDisclosed
 {
-    public class MoviePlayer
+    public class MoviePlayer:Drawable
     {
         public DataSource movie { get; private set; }
         VideoPlayback video;
@@ -29,11 +31,6 @@ namespace FateDisclosed
             movie.LoadFromFile(path, EnableAudio:playSound);
             video = new VideoPlayback(movie);
             audio = new AudioPlayback(movie);
-        }
-
-        public void Draw()
-        {
-            screen.app.win.Draw(video);
         }
 
         public void Play()
@@ -54,6 +51,11 @@ namespace FateDisclosed
         public void Update()
         {
             movie.Update();
+        }
+
+        public void Draw(RenderTarget target, RenderStates states)
+        {
+            target.Draw(video);
         }
     }
 }

@@ -16,8 +16,8 @@ namespace FateDisclosed.GUI.Windows
 
         public ExitDialog(AbstractScreen parentScreen) : base(parentScreen)
         {
-            description = new Text("Czy na pewno chcesz wyjść z gry?", assets.GetFont("arial"), 25);
-            description.Position = new SFML.System.Vector2f(500 / 2 - description.GetGlobalBounds().Width / 2, 50);
+            description = new Text("Czy na pewno chcesz wyjść z gry?", AssetsManager.GetFont("fabada"), 23);
+            description.Position = new SFML.System.Vector2f(500 / 2 - description.GetGlobalBounds().Width / 2, 60);
             label = "Wyjście";
         }
 

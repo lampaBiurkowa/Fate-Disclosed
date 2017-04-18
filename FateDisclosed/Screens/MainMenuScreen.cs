@@ -12,7 +12,6 @@ namespace FateDisclosed.Screens
 {
     class MainMenuScreen : AbstractScreen
     {
-        AssetsManager menuAssets;
         Sprite menuLayer1;
         Sprite menuLayer2;
 
@@ -26,9 +25,9 @@ namespace FateDisclosed.Screens
         SelectProfileDialog selectProfileDialog;
         OptionsDialog optionsDialog;
 
-        public MainMenuScreen(AppCore app, AssetsManager manager) : base(app)
+        public MainMenuScreen(AppCore app) : base(app)
         {
-            menuAssets = manager;
+            
         }
 
         public override void Draw()
@@ -56,14 +55,14 @@ namespace FateDisclosed.Screens
             app.view.Center = new SFML.System.Vector2f(app.virtualResolution.X / 2, app.virtualResolution.Y / 2);
             
             //Menu layers
-            menuLayer1 = new Sprite(menuAssets.GetTexture("menu layer1"));
-            menuLayer2 = new Sprite(menuAssets.GetTexture("menu layer2"));
+            menuLayer1 = new Sprite(AssetsManager.GetTexture("menu layer1"));
+            menuLayer2 = new Sprite(AssetsManager.GetTexture("menu layer2"));
             //Buttons
-            startGame = new GUI.Controls.Button(app.win, menuAssets.GetTexture("button"), "Start", menuAssets.GetFont("arial"));
-            loadGame = new GUI.Controls.Button(app.win, menuAssets.GetTexture("button"), "Load game", menuAssets.GetFont("arial"));
-            selectProfile = new GUI.Controls.Button(app.win, menuAssets.GetTexture("button"), "Select profile", menuAssets.GetFont("arial"));
-            options = new GUI.Controls.Button(app.win, menuAssets.GetTexture("button"), "Options", menuAssets.GetFont("arial"));
-            quitGame = new GUI.Controls.Button(app.win, menuAssets.GetTexture("button"), "Quit", menuAssets.GetFont("arial"));
+            startGame = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Start", AssetsManager.GetFont("caprkfont"));
+            loadGame = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Load game", AssetsManager.GetFont("caprkfont"));
+            selectProfile = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Select profile", AssetsManager.GetFont("caprkfont"));
+            options = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Options", AssetsManager.GetFont("caprkfont"));
+            quitGame = new GUI.Controls.Button(app.win, AssetsManager.GetTexture("button"), "Quit", AssetsManager.GetFont("caprkfont"));
 
             startGame.Position = new SFML.System.Vector2f(app.virtualResolution.X - 400, 200);
             loadGame.Position = new SFML.System.Vector2f(app.virtualResolution.X - 400, 320);

@@ -21,21 +21,18 @@ namespace FateDisclosed
         public View view;
         public ScreenManager manager;
         public Color clearColor;
-        public AssetsManager assetsManager;
 
         public AppCore(Vector2i screenSize)
         {
             this.ScreenSize = screenSize;
             virtualResolution = new Vector2i(1600, 900);
 
-            win = new RenderWindow(new SFML.Window.VideoMode((uint)screenSize.X, (uint)screenSize.Y), "Fate Disclosed",SFML.Window.Styles.Fullscreen, new ContextSettings(0, 0, 2));
+            win = new RenderWindow(new SFML.Window.VideoMode((uint)screenSize.X, (uint)screenSize.Y), "Fate Disclosed",SFML.Window.Styles.Close);
             win.SetVerticalSyncEnabled(true);
             win.Closed += Win_Closed;
             win.Resized += Win_Resized;
             win.SetIcon(256, 256, new Image("res/icon.png").Pixels);
             clearColor = new Color(0, 0, 0);
-
-            assetsManager = new AssetsManager();
             manager = new ScreenManager();
         }
 
@@ -72,7 +69,7 @@ namespace FateDisclosed
 
         ~AppCore()
         {
-            assetsManager.Dispose();
+            AssetsManager.Dispose();
         }
     }
 }

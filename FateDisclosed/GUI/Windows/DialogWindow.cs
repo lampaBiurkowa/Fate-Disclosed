@@ -15,7 +15,6 @@ namespace FateDisclosed.GUI.Windows
 {
     public abstract class DialogWindow : Drawable
     {
-        protected AssetsManager assets;
         protected RenderTexture windowTexture;
         protected AbstractScreen parentScreen;
         Sprite window;
@@ -42,10 +41,6 @@ namespace FateDisclosed.GUI.Windows
         {
             this.parentScreen = parentScreen;
 
-            assets = new AssetsManager();
-            assets.LoadPackage("res/textures/window.fdp");
-            assets.LoadFontFromFile("arial", new Font("res/fonts/arial.ttf"));
-
             windowTexture = new RenderTexture(500, 300);
             window = new Sprite(windowTexture.Texture);
         
@@ -54,12 +49,12 @@ namespace FateDisclosed.GUI.Windows
             window.Scale = new Vector2f(0.0f, 0.0f);
             window.Color = new Color(255, 255, 255, 0);
 
-            border = new Sprite(assets.GetTexture("window"));
+            border = new Sprite(AssetsManager.GetTexture("window"));
             border.Origin = new Vector2f(250, 150);
             border.Position = new Vector2f(window.GetLocalBounds().Width / 2, window.GetLocalBounds().Height / 2);
 
-            title = new Text("", assets.GetFont("arial"), 21);
-            title.Position = new Vector2f(5,5);
+            title = new Text("", AssetsManager.GetFont("fabada"), 21);
+            title.Position = new Vector2f(7,10);
 
             mouseInput = new Input.MouseInput();
         }
