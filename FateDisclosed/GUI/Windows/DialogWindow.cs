@@ -4,7 +4,7 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
- ***/
+***/
 using FateDisclosed.Screens;
 using SFML.Graphics;
 using SFML.System;
@@ -15,10 +15,11 @@ namespace FateDisclosed.GUI.Windows
 {
     public abstract class DialogWindow : Drawable
     {
+        protected AssetsManager assets;
         protected RenderTexture windowTexture;
         protected AbstractScreen parentScreen;
-        protected Sprite window;
-        protected Sprite border;
+        Sprite window;
+        Sprite border;
         Text title;
 
         float time = 0;
@@ -35,11 +36,15 @@ namespace FateDisclosed.GUI.Windows
         }
 
 
-        protected bool show = false;
+        bool show = false;
 
         protected DialogWindow(AbstractScreen parentScreen)
         {
             this.parentScreen = parentScreen;
+
+            assets = new AssetsManager();
+            assets.LoadPackage("res/textures/window.fdp");
+            assets.LoadFontFromFile("arial", new Font("res/fonts/arial.ttf"));
 
             windowTexture = new RenderTexture(500, 300);
             window = new Sprite(windowTexture.Texture);
@@ -49,12 +54,12 @@ namespace FateDisclosed.GUI.Windows
             window.Scale = new Vector2f(0.0f, 0.0f);
             window.Color = new Color(255, 255, 255, 0);
 
-            border = new Sprite(AssetsManager.GetTexture("window"));
-            //border.Origin = new Vector2f(250, 150);
-            //border.Position = new Vector2f(window.GetLocalBounds().Width / 2, window.GetLocalBounds().Height / 2);
+            border = new Sprite(assets.GetTexture("window"));
+            border.Origin = new Vector2f(250, 150);
+            border.Position = new Vector2f(window.GetLocalBounds().Width / 2, window.GetLocalBounds().Height / 2);
 
-            title = new Text("", AssetsManager.GetFont("fabada"), 21);
-            title.Position = new Vector2f(7,10);
+            title = new Text("", assets.GetFont("arial"), 21);
+            title.Position = new Vector2f(5,5);
 
             mouseInput = new Input.MouseInput();
         }
@@ -76,10 +81,12 @@ namespace FateDisclosed.GUI.Windows
 
                     if (window.Scale.X < 1.0f)
                     {
+                        Console.WriteLine(".");
                         window.Scale = new Vector2f(window.Scale.X + 0.1f, window.Scale.Y + 0.1f);
                         window.Color = new Color(255, 255, 255, Convert.ToByte(window.Color.A + 25.4));
                     }
-
+                    Console.WriteLine(window.GetGlobalBounds());
+                    Console.WriteLine(mousePosition);
                     if (mouseInput.MousePressed(SFML.Window.Mouse.Button.Left) && window.Scale.X > 0.9f && !window.GetGlobalBounds().Contains(mousePosition.X, mousePosition.Y))
                     {
                         show = false;

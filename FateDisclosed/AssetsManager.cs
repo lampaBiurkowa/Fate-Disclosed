@@ -4,23 +4,26 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
- ***/
+***/
 using SFML.Graphics;
-using SFML.Audio;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Windows.Forms;
 namespace FateDisclosed
 {
-    public static class AssetsManager
+    public class AssetsManager
     {
-        static Dictionary<string, Texture> Textures = new Dictionary<string, Texture>();
-        static Dictionary<string, Font> Fonts = new Dictionary<string, Font>();
-        static Dictionary<string, SoundBuffer> SBuffers = new Dictionary<string, SoundBuffer>();
-        static Dictionary<string, Music> Musics = new Dictionary<string, Music>();
+        Dictionary<string, Texture> Textures;
+        Dictionary<string, Font> Fonts;
 
-        public static Texture GetTexture(string name)
+        public AssetsManager()
+        {
+            Textures = new Dictionary<string, Texture>();
+            Fonts = new Dictionary<string, Font>();
+        }
+
+        public Texture GetTexture(string name)
         {
             Texture t;
             if(Textures.TryGetValue(name,out t)==false)
@@ -30,7 +33,7 @@ namespace FateDisclosed
             return t;
         }
 
-        public static Font GetFont(string name)
+        public Font GetFont(string name)
         {
             Font f;
             if (Fonts.TryGetValue(name, out f) == false)
@@ -40,27 +43,7 @@ namespace FateDisclosed
             return f;
         }
 
-
-        public static Music GetMusic(string name)
-        {
-            Music m;
-            if (Musics.TryGetValue(name, out m) == false)
-            {
-                System.Windows.Forms.MessageBox.Show("Failed to load music " + name + ".", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            return m;
-        }
-
-        public static SoundBuffer GetSBuffer(string name)
-        {
-            SoundBuffer sb;
-            if (SBuffers.TryGetValue(name, out sb) == false)
-            {
-                System.Windows.Forms.MessageBox.Show("Failed to load sound buffer " + name + ".", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            return sb;
-        }
-        public static void LoadTexture(string name, Texture texture)
+        public void LoadTexture(string name, Texture texture)
         {
             if (!Textures.ContainsKey(name))
             {
@@ -72,7 +55,7 @@ namespace FateDisclosed
             }
         }
 
-        public static void LoadFont(string name, Font font)
+        public void LoadFontFromFile(string name, Font font)
         {
             if (!Fonts.ContainsKey(name))
             {
@@ -84,30 +67,7 @@ namespace FateDisclosed
             }
         }
 
-        public static void LoadMusic(string name, Music music)
-        {
-            if (!Fonts.ContainsKey(name))
-            {
-                Musics.Add(name, music);
-            }
-            else
-            {
-                Console.WriteLine("Failed to load music " + name + ". Reason: music exist.");
-            }
-        }
-
-        public static void LoadSBuffer(string name, SoundBuffer sBuffer)
-        {
-            if (!Fonts.ContainsKey(name))
-            {
-                SBuffers.Add(name, sBuffer);
-            }
-            else
-            {
-                Console.WriteLine("Failed to load sound buffer " + name + ". Reason: sound exist.");
-            }
-        }
-        public static void LoadTexturePackage(string packagePath)
+        public void LoadPackage(string packagePath)
         {
             ZipReader zip = new ZipReader(packagePath);
             StreamReader reader = zip.LoadTextStream("package info.txt");
@@ -125,61 +85,7 @@ namespace FateDisclosed
             }
         }
 
-        public static void LoadFontPackage(string packagePath)
-        {
-            ZipReader zip = new ZipReader(packagePath);
-            StreamReader reader = zip.LoadTextStream("package info.txt");
-            string line = "";
-            while (line != null)
-            {
-                line = reader.ReadLine();
-                if (line != null)
-                {
-                    int separator = line.IndexOf(":");
-                    string assetPath = line.Substring(0, separator);
-                    string assetName = line.Substring(separator + 1, line.Length - separator - 1);
-                    LoadFont(assetName, zip.LoadFont(assetPath));
-                }
-            }
-        }
-
-        public static void LoadMusicPackage(string packagePath)
-        {
-            ZipReader zip = new ZipReader(packagePath);
-            StreamReader reader = zip.LoadTextStream("package info.txt");
-            string line = "";
-            while (line != null)
-            {
-                line = reader.ReadLine();
-                if (line != null)
-                {
-                    int separator = line.IndexOf(":");
-                    string assetPath = line.Substring(0, separator);
-                    string assetName = line.Substring(separator + 1, line.Length - separator - 1);
-                    LoadMusic(assetName, zip.LoadMusic(assetPath));
-                }
-            }
-        }
-
-        public static void LoadSBufferPackage(string packagePath)
-        {
-            ZipReader zip = new ZipReader(packagePath);
-            StreamReader reader = zip.LoadTextStream("package info.txt");
-            string line = "";
-            while (line != null)
-            {
-                line = reader.ReadLine();
-                if (line != null)
-                {
-                    int separator = line.IndexOf(":");
-                    string assetPath = line.Substring(0, separator);
-                    string assetName = line.Substring(separator + 1, line.Length - separator - 1);
-                    LoadSBuffer(assetName, zip.LoadSBuffer(assetPath));
-                }
-            }
-        }
-
-        public static void Dispose()
+        public void Dispose()
         {
             foreach(KeyValuePair<string, Texture> texture in Textures)
             {

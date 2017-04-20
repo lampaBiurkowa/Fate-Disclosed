@@ -4,9 +4,8 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
- ***/ 
+***/
 using SFML.Graphics;
-using SFML.Audio;
 using System.IO;
 using System.IO.Compression;
 
@@ -101,44 +100,6 @@ namespace FateDisclosed
                 {
                     System.IO.Stream s = entry.Open();
                     return new System.IO.StreamReader(s);
-                }
-            }
-
-            return null;
-        }
-
-        public Music LoadMusic(string fileName)
-        {
-            Music music;
-            foreach (ZipArchiveEntry entry in zip.Entries)
-            {
-                if (entry.Name == fileName)
-                {
-                    System.IO.Stream s = entry.Open();
-                    System.IO.StreamReader reader = new System.IO.StreamReader(s);
-                    byte[] texcode = ReadFully(s);
-
-                    music = new Music(texcode);
-                    return music;
-                }
-            }
-
-            return null;
-        }
-
-        public SoundBuffer LoadSBuffer(string fileName)
-        {
-            SoundBuffer sbuffer;
-            foreach (ZipArchiveEntry entry in zip.Entries)
-            {
-                if (entry.Name == fileName)
-                {
-                    System.IO.Stream s = entry.Open();
-                    System.IO.StreamReader reader = new System.IO.StreamReader(s);
-                    byte[] texcode = ReadFully(s);
-
-                    sbuffer = new SoundBuffer(texcode);
-                    return sbuffer;
                 }
             }
 

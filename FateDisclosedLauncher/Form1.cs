@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
+
 
 namespace FateDisclosedLauncher
 {
@@ -34,8 +36,7 @@ namespace FateDisclosedLauncher
                 UpdateGame();
             }
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.FileName = "FateDisclosed.exe";
-            startInfo.Arguments = "1600 900";
+            startInfo.FileName = "./FateDisclosed.exe";
             try
             {
                 System.Diagnostics.Process.Start(startInfo);
@@ -53,3 +54,4 @@ namespace FateDisclosedLauncher
         }
     }
 }
+

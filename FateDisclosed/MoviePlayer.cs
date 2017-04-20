@@ -1,22 +1,9 @@
-﻿/***
- * *********
- * This source uses SFML (Simple and Fast Multimedia Library)
- * which is released under the zlib/png license.
- * Copyright (c) Laurent Gomila
- * *********
- * This source uses MotionNET
- * which is released under the zlib/png license.
- * Copyright (C) 2015 by Zachariah Brown
- * *********
- ***/
-using System;
-using FateDisclosed.Screens;
+﻿using FateDisclosed.Screens;
 using MotionNET;
-using SFML.Graphics;
 
 namespace FateDisclosed
 {
-    public class MoviePlayer:Drawable
+    public class MoviePlayer
     {
         public DataSource movie { get; private set; }
         VideoPlayback video;
@@ -31,6 +18,11 @@ namespace FateDisclosed
             movie.LoadFromFile(path, EnableAudio:playSound);
             video = new VideoPlayback(movie);
             audio = new AudioPlayback(movie);
+        }
+
+        public void Draw()
+        {
+            screen.app.win.Draw(video);
         }
 
         public void Play()
@@ -51,11 +43,6 @@ namespace FateDisclosed
         public void Update()
         {
             movie.Update();
-        }
-
-        public void Draw(RenderTarget target, RenderStates states)
-        {
-            target.Draw(video);
         }
     }
 }

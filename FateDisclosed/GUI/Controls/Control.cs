@@ -4,7 +4,7 @@
  * which is released under the zlib/png license.
  * Copyright (c) Laurent Gomila
  * *********
- ***/
+***/
 using SFML.Graphics;
 using SFML.System;
 
@@ -20,6 +20,7 @@ namespace FateDisclosed.GUI.Controls
             this.win = win;
         }
 
+        public abstract void Draw();
         public abstract void Update();
     }
 }
